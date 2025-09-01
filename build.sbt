@@ -6,6 +6,7 @@ lazy val akkaVersion = "2.6.19"
 val akkaHttpVersion = "10.2.10"
 lazy val leveldbVersion = "0.7"
 lazy val leveldbJniVersion = "1.8"
+val scalaTestVersion = "3.0.9"
 
 lazy val root = (project in file("."))
   .settings(
@@ -13,11 +14,14 @@ lazy val root = (project in file("."))
   )
 
 libraryDependencies ++= Seq(
+  // akka test kit
+  "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+
   "com.typesafe.akka" %% "akka-persistence" % akkaVersion,
   // akka http
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   // local levelDB stores
   "org.iq80.leveldb"            % "leveldb"          % leveldbVersion,
-  "org.fusesource.leveldbjni"   % "leveldbjni-all"   % leveldbJniVersion
-
+  "org.fusesource.leveldbjni"   % "leveldbjni-all"   % leveldbJniVersion,
+  "org.scalatest" %% "scalatest" % scalaTestVersion,
 )
